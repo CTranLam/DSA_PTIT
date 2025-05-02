@@ -1,0 +1,48 @@
+#include<bits/stdc++.h>
+using namespace std;
+typedef long long ll;
+bool check=false;
+void init(int a[],int n){
+    for(int i=1 ; i<=n ; i++){
+        a[i]=i;
+    }
+}
+void sinh(int a[],int n){
+    int i=n-1;
+    while(i >=1 && a[i] > a[i+1]){
+        --i;
+    }
+    if(i==0) check=true;
+    else{
+        int j=n;
+        while(a[i] > a[j]){
+            --j;
+        }
+        swap(a[i],a[j]);
+        reverse(a+i+1,a+n+1);
+    }
+}
+int main(){
+    int t;
+    cin >> t;
+    while(t--){
+        int n;cin >> n;
+        int a[n];
+        init(a,n);
+        check=false;
+        vector<string> v;
+        while(!check){
+            string res="";
+            for(int i=1 ; i<=n ; i++){
+                res+=to_string(a[i]);
+            }
+            v.push_back(res);
+            sinh(a,n);
+        }
+        reverse(v.begin(),v.end());
+        for(string x : v){
+            cout << x<<" ";
+        }
+        cout << endl;
+    }
+}
