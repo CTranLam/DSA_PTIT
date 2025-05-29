@@ -5,13 +5,13 @@ int res = 0;
 int n, k;
 int M[10000];
 void Try(int i, int s,int x,int cnt) {
-	if (cnt == k && i==n){
+	if (cnt == k && i==n){ // tao du k doan thoa man
         res++;
 	    return;
 	}
 	for (int j = i; j < n; j++) {
 		s += M[j];
-		if (s == x)Try(j+1, 0, x, cnt+1);
+		if (s == x)Try(j+1, 0, x, cnt+1); // bat dau 1 doan moi
 	}
 }
 int main() {

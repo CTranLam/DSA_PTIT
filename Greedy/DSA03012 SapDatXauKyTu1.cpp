@@ -11,8 +11,7 @@ bool check(string s){
     for(auto x : mp){
         max_cnt=max(max_cnt,x.second);
     }
-    len-=max_cnt;
-    if(max_cnt > (len+1)) return false;
+    if(max_cnt > (s.length() + 1) / 2) return false;
     return true;
 }
 int main(){

@@ -14,7 +14,8 @@ void Try(int i,vector<int> v){
         ans.push_back(s);
     }
     for(int j=i ; j<=n ; j++){
-        if(a[j] >= v.back()){
+        if(a[j] >= v.back()){ // khong so sanh voi v[i-1] do i la chi so cua mang a nen chua chac no da la phan tu dung cuoi trong v
+            cout << v.back() << endl;
             v.push_back(a[j]);
             Try(j+1,v);
             v.pop_back();

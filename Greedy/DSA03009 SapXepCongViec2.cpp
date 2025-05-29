@@ -5,7 +5,6 @@ struct job {
 };
 bool cmp(job A, job B) {
 	return A.c > B.c;
-	
 }
 int main() {
 	int t; cin >> t;

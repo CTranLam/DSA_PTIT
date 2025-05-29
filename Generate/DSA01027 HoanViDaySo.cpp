@@ -3,53 +3,41 @@ using namespace std;
 typedef long long ll;
 void init(int a[],int n){
     for(int i=1 ; i<=n ; i++){
-        a[i]=6;
+        a[i]=i;
     }
 }
 bool check=false;
 void sinh(int a[],int n){
-    int i=n;
-    while(i >= 1 && a[i]==8){
-        a[i]=6;
+    int i=n-1;
+    while( i>= 1 && a[i] > a[i+1]){
         --i;
     }
     if(i==0){
         check=true;
     }
     else{
-        a[i]=8;
-    }
-}
-bool solve(string s){
-    for(int i=1 ; i<s.size(); i++){
-        if(s[i] == s[i-1] && s[i]== '8') return false;
-    }
-    int cnt6=0;
-    for(int i=0 ; i<s.length(); i++){
-        if(s[i]=='6'){
-            ++cnt6;
-            if(cnt6 > 3) return false;
+        int j=n;
+        while(a[i] > a[j]){
+            --j;
         }
-        else{
-            cnt6=0;
-        }
+        swap(a[i],a[j]);
+        reverse(a+i+1,a+n+1);
     }
-    return true;
 }
 int main(){
-    int n;cin >> n;
-    n-=2;
-    int a[n+5];
+    int n;
+    cin >> n;
+    int a[n+5],b[n+5];
+    for(int i=1 ; i<=n ; i++){
+        cin >> b[i];
+    }
+    sort(b+1,b+n+1);
     init(a,n);
     while(!check){
-        string s="8";
         for(int i=1 ; i<=n ; i++){
-            s+=to_string(a[i]);
+            cout << b[a[i]] <<" ";
         }
-        s+="6";
-        if(solve(s)){
-            cout << s << endl;
-        }
+        cout << endl;
         sinh(a,n);
     }
 }

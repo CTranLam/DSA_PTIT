@@ -18,12 +18,12 @@ void solve() {
         i--;
     }
     if (i < 0) {
-        if(x[0]==1){
+        if(x[0]==1){ // no la to hop be nhat 1 2 3...
             for (int j = 0; j < k; j++) {
                 x[j] = n - k + j + 1;
             }
         }
-        else{
+        else{ // tang dan nhung chua be nhat
             x[0]--;
             for(int j= 1 ; j<k ; j++){
                 x[j]=n-k+j+1;
