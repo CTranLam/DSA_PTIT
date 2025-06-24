@@ -1,71 +1,55 @@
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
-bool chuaxet[1005];
-vector<int> ke[1005];
-vector< pair<int, int> > s;
-vector< pair<int, int> > ans;
-int v, e, res;
-void dfs(int u) {
-    chuaxet[u] = true;
-    for (int i = 0; i < ke[u].size(); i++) {
-        int h = ke[u][i];
-        if (chuaxet[h] == false) {
-            dfs(h);
+
+vector<int> ke[10005];
+int visited[10005];
+int dis[10005], low[10005];
+int timer = 0;
+vector<pair<int, int>> canhcau;
+
+void dfs(int u, int parent) {
+    visited[u] = 1;
+    dis[u] = low[u] = ++timer;
+    for (int v : ke[u]) {
+        if (v == parent) continue;
+        if (!visited[v]) {
+            dfs(v, u);
+            low[u] = min(low[u], low[v]);
+            if (dis[u] < low[v]) {
+                if (u < v) canhcau.push_back({u, v});
+                else canhcau.push_back({v, u});
+            }
+        } else {
+            low[u] = min(low[u], dis[v]);
         }
     }
 }
-void reset() {
-    for (int i = 0; i < 1005; i++)
-        ke[i].clear();
-    memset(chuaxet, false, 1005);
-}
-int tplt() {
-    int dem = 0;
-    for (int i = 1; i <= v; i++) {
-        if (chuaxet[i] == false) {
-            dem++;
-            dfs(i);
-        }
-    }
-    return dem;
-}
-void canhcau(int canh) {
-    int dem = 0;
-    for (int i = 0; i < s.size(); i++) {
-        if (i != canh) {
-            ke[s[i].first].push_back(s[i].second);
-            ke[s[i].second].push_back(s[i].first);
-        }
-    }
-    dem = tplt();
-    if (dem > res) {
-        if (s[canh].first < s[canh].second) ans.push_back({ s[canh].first,s[canh].second });
-        else ans.push_back({ s[canh].second,s[canh].first });
-    }
-}
+
 int main() {
-    int t;
-    cin >> t;
+    int t; cin >> t;
     while (t--) {
-        cin >> v >> e;
-        reset();
-        s.clear();
-        ans.clear();
-        int start, end;
+        int v, e; cin >> v >> e;
+        for (int i = 1; i <= v; i++) {
+            ke[i].clear();
+            visited[i] = 0;
+            dis[i] = low[i] = 0;
+        }
         for (int i = 0; i < e; i++) {
-            cin >> start >> end;
-            s.push_back({ start,end });
-            ke[start].push_back(end);
-            ke[end].push_back(start);
+            int x, y; cin >> x >> y;
+            ke[x].push_back(y);
+            ke[y].push_back(x);
         }
-        res = tplt();
-        for (int i = 0; i < s.size(); i++) {
-            reset();
-            canhcau(i);
+        timer = 0;
+        for (int i = 1; i <= v; i++) {
+            if (!visited[i]) {
+                dfs(i, -1);
+            }
         }
-        for (int i = 0; i < ans.size(); i++) {
-            cout << ans[i].first << " " << ans[i].second << " ";
+        sort(canhcau.begin(), canhcau.end());
+        for (auto x : canhcau) {
+            cout << x.first << " " << x.second << " ";
         }
         cout << endl;
+        canhcau.clear();
     }
 }

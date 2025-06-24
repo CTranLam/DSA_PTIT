@@ -1,45 +1,40 @@
-#include<bits/stdc++.h>
-#define mod              1000000007
-#define ll               long long
-#define	p(x)             pair<x,x>
-#define v(x)             vector<x>
-#define tree             node*
-#define sz(a)            a.size()
-#define f                first
-#define s                second
-#define pb(a)            push_back(a)
-#define pf(a)            push_front(a)
-#define FOR(i,l,r)       for(int i=l;i<r;i++)
-#define FORX(i,l,r,x)    for(int i=l;i<r;i+=x)
-#define FORD(i,l,r)      for(int i=l;i>=r;i--)
-#define correct(x,y,n,m) 0<=(x)&&(x)<(n)&&0<=(y)&&(y)<(m)
-#define cin(M,n)         FOR(i,0,n)cin>>M[i]
-#define cout(M,n)        FOR(i,0,n)cout<<M[i]
-#define rs(M,x)          memset(M,x,sizeof(M))
-#define reset()          FOR(i, 0, 1001)A[i].clear(),check[i]=false
-#define faster()         cin.tie(0); ios_base::sync_with_stdio(false); cout.tie(0);
-#define run()            int t; cin >> t; while (t--)
-#define pq(x)            priority_queue<x>
-#define neg_pq(x)        priority_queue<x, vector<x>, greater<x>>
-#define all(M)           M.begin(),M.end()
+#include <bits/stdc++.h>
 using namespace std;
 
 int main() {
-	faster();
-	int k, n; cin >> k >> n;
-	v(string) S(k); cin(S, k);
-	v(int) M(n);
-	iota(all(M), 0);
-	int res = INT_MAX;
-	do {
-		int minn = INT_MAX, maxx = INT_MIN;
-		for (auto s : S) {
-			string x;
-			FOR(i, 0, n)x += s[M[i]];
-			minn = min(minn, stoi(x));
-			maxx = max(maxx, stoi(x));
-		}
-		res = min(res, maxx - minn);
-	} while (next_permutation(all(M)));
-	cout << res << endl;
+    ios_base::sync_with_stdio(false);
+    cin.tie(nullptr);
+    cout.tie(nullptr);
+
+    int k, n;
+    cin >> k >> n;
+    
+    vector<string> S(k);
+    for (int i = 0; i < k; ++i) {
+        cin >> S[i];
+    }
+
+    vector<int> M(n);
+    iota(M.begin(), M.end(), 0); // M = {0, 1, ..., n-1}
+
+    int res = INT_MAX;
+    do {
+        int min_val = INT_MAX;
+        int max_val = INT_MIN;
+
+        for (const auto& s : S) {
+            string x;
+            for (int i = 0; i < n; ++i) {
+                x += s[M[i]];
+            }
+            int val = stoi(x);
+            min_val = min(min_val, val);
+            max_val = max(max_val, val);
+        }
+
+        res = min(res, max_val - min_val);
+    } while (next_permutation(M.begin(), M.end()));
+
+    cout << res << '\n';
+    return 0;
 }

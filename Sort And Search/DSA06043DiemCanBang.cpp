@@ -21,7 +21,7 @@ int main(){
         //     cout << f[i] <<" ";
         // }
         cout << endl;
-        for(int i=0 ; i<n ; i++){
+        for(int i=1 ; i<n ; i++){
             if(f[i]==f[n-1]-f[i-1]){
                 cout << i+1 << endl;
                 check=true;

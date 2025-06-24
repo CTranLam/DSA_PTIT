@@ -8,7 +8,7 @@ void solve(int a[],int n){
     for(int i=0 ; i<n ; i++){
         //Tim thang dau tien lon hon a[i] ben trai
         while(!st.empty() && a[st.top()] <= a[i]){
-            st.pop();
+            st.pop(); // loai bo het thangbe hon hien tai
         }
         if(st.empty()) res[i]=i+1;
         else res[i]=i-st.top();

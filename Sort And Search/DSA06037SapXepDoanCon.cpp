@@ -25,7 +25,7 @@ int main(){
         vector<int> v;
         for(int i=0 ; i<=n-2 ; i++){
             if(Max[i] <= Min[i+1]){
-                v.push_back(i+1);
+                v.push_back(i+1); // chuyen ve base 1
             }
         }
         if(v.size()==0) cout << 0 << endl;

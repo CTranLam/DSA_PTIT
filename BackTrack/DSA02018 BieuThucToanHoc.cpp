@@ -25,7 +25,7 @@ int main(){
         sort(a,a+5);
         check=false;
         do{
-            Try(1,a[0]);
+            Try(1,a[0]); // de thoa man trong th nhan
         }while(next_permutation(a,a+5) && !check);
         if(check){
             cout << "YES" <<endl;

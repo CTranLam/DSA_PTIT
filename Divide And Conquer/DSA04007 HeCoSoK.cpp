@@ -1,8 +1,4 @@
-#include<iostream>
-#include<vector>
-#include<string.h>
-#include<string>
-#include<math.h>
+#include<bits/stdc++.h>
 using namespace std;
 string chuyen(int k, int n) {
 	string res = "";
@@ -13,9 +9,11 @@ string chuyen(int k, int n) {
 	return res;
 }
 int chuyen1(int k, string n) {
+	int mu=pow(k,n.size()-1);
 	int res = 0;
 	for (int i = 0; i < n.length(); i++) {
-		res = res * k + n[i] - '0';
+		res += (n[i]-'0')*mu;
+		mu=pow(k,n.size()-2-i);
 	}
 	return res;
 }

@@ -29,8 +29,8 @@ void makeNode(node* &root,int IN[],int LE[],int n ){
         else R[r++]=LE[i];
     }
     // noi node con vao node cha
-    if(k > 0) makeNode(root->left,IN,L,k); // neu co phan tu ben trai thi goi de xay cay trai
-    if(n-k-1 > 0) makeNode(root->right,IN+k+1,R,n-k-1);
+    if(l > 0) makeNode(root->left,IN,L,l);
+	if(r > 0) makeNode(root->right,IN+k+1,R,r);
 }
 void Postorder(node* root){
     if(root->left != NULL) Postorder(root->left);

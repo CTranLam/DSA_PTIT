@@ -24,7 +24,7 @@ int main(){
     cin >> t;
     while(t--){
         string s; cin >> s;
-        stack<node* > st;
+        stack<node*> st;
         for(char c : s){
             if(isalpha(c)){
                 st.push(new node(c));

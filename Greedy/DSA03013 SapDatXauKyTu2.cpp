@@ -10,6 +10,7 @@ bool check(string s,int d){
     }
     int len=s.size()-max_cnt;
     if(len >= (d-1)*(max_cnt-1)) return true;
+    // max_cnt-1 khoang trong, moi khoang trong can d-1 ky tu
     return false;
 }
 int main(){
