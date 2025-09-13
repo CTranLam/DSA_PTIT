@@ -1,0 +1,1 @@
+{"name":"Local: OLP031TruyVanIT1","url":"d:\\CPP\\DSA_PTIT\\DSA-SamSung\\OnTap\\OLP031TruyVanIT1.cpp","tests":[{"id":1757601181791,"input":"5\n\n1 2 3 4 5\n\n3\n\n2 1 5\n\n1 2 5\n\n2 1 5","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\DSA_PTIT\\DSA-SamSung\\OnTap\\OLP031TruyVanIT1.cpp","group":"local","local":true}

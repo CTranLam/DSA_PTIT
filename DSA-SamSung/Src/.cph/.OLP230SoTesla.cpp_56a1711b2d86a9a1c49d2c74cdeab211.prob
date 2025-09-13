@@ -1,0 +1,1 @@
+{"name":"Local: OLP230SoTesla","url":"d:\\CPP\\DSA_PTIT\\DSA-SamSung\\OnTap\\OLP230SoTesla.cpp","tests":[{"id":1757645112949,"input":"6\n\n1 1000\n\n2 1000\n\n3 1000\n\n4 1000\n\n5 1000\n\n1000 1000000007","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"d:\\CPP\\DSA_PTIT\\DSA-SamSung\\OnTap\\OLP230SoTesla.cpp","group":"local","local":true}

@@ -14,6 +14,7 @@ void DFS(int u,int parent){
     for(int v : dsk[u]){
         if(v==parent) continue;
         if(!visited[v]){
+            visited[v]=1;
             DFS(v,u);
             ++child;
             low[u]=min(low[u],low[v]);

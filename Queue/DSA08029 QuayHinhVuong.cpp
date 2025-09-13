@@ -51,17 +51,13 @@ int main(){
     ios::sync_with_stdio(false);
     cin.tie(0);
     cout.tie(0);
-    int t;
-    cin >> t;
-    while(t--){
-        vector<int> s(6);
-        vector<int> t(6);
-        for(int i=0 ; i<6 ; i++){
-            cin >> s[i];
-        }
-        for(int i=0 ; i<6 ; i++){
-            cin >> t[i];
-        }
-        cout << bfs(s,t) << endl;
+    vector<int> s(6);
+    vector<int> t(6);
+    for(int i=0 ; i<6 ; i++){
+        cin >> s[i];
     }
+    for(int i=0 ; i<6 ; i++){
+        cin >> t[i];
+    }
+    cout << bfs(s,t) << endl;
 }
